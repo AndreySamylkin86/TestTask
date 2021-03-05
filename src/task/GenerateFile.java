@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateFile {
-    private final static int COUNT_LINES = 1_000_000;
+    private final static int COUNT_LINES = 1_00;
     private final static int MAX_LENGTH_STRING = 20;
     private final static String PATH_RESULT_FILE = "source.txt";
     private final static String SOURCE_CHAR = "0123456789"
@@ -35,11 +35,12 @@ public class GenerateFile {
             lengthString = (int) (maxLengthString * Math.random()) + 1;
 
             StringBuilder sb = new StringBuilder(lengthString);
+            sb.append(i);
 
-            for (int j = 0; j < lengthString; j++) {
-                index = (int) (sourceChar.length() * Math.random());
-                sb.append(sourceChar.charAt(index));
-            }
+//            for (int j = 0; j < lengthString; j++) {
+//                index = (int) (sourceChar.length() * Math.random());
+//                sb.append(sourceChar.charAt(index));
+//            }
             stringList.add(sb.toString());
         }
         return stringList;

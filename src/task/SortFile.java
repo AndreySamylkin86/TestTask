@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class SortFile {
 
-    private final static int COUNT_LINES_PART = 1_000;
+    private final static int COUNT_LINES_PART = 1_0;
     private final static String PATH_SOURCE_FILE = "source.txt";
     private final static String PATH_RESULT_FILE = "result.txt";
     private final static String TEMP_FILES_DIR = "temp";
@@ -94,7 +94,7 @@ public class SortFile {
             readerList.add(new BufferedReader(new FileReader(f)));
         }
         String line;
-        // считываем одну строку из каждого файла, добавляем в readerList,
+        // считываем одну строку из каждого файла, добавляем в tempList,
         // сортируем его и записываем в итоговый файл
         for (int i = 0; i < COUNT_LINES_PART + 1; i++) {
 
