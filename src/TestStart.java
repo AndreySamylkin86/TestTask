@@ -6,8 +6,8 @@ import service.SortFileImplVerSaveRAM;
 import java.io.IOException;
 
 public class TestStart {
-    private final static int COUNT_LINES_SOURCE = 10_000;
-    private final static int COUNT_LINES_AVAILABLE_RAM = 1000;
+    private final static int COUNT_LINES_SOURCE = 1_000_000_000;
+    private final static int COUNT_LINES_AVAILABLE_RAM = 10_000_000;
     private final static int MAX_LENGTH_STRING = 20;
     private final static String PATH_SOURCE_FILE = "source.txt";
     private final static String PATH_RESULT_FILE = "result.txt";
@@ -18,7 +18,7 @@ public class TestStart {
     public static void main(String[] args) throws IOException {
         generateFileSource();
         testEffectiveRAM();
-        testSaveRAM();
+//        testSaveRAM();
     }
 
     private static void generateFileSource() throws IOException {
@@ -40,7 +40,7 @@ public class TestStart {
             e.printStackTrace();
         }
         long l2 = System.currentTimeMillis();
-        System.out.println("Время сортировки с максимальным использованием доступной RAM:  " + (l2 - l1) + " мсек");
+        System.out.println("Время сортировки с эффективным использованием доступной RAM:  " + (l2 - l1) + " мсек");
     }
 
     private static void testSaveRAM() {

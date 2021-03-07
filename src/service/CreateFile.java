@@ -10,14 +10,19 @@ import java.util.List;
 
 public class CreateFile {
 
-    public void createFile(String pathResultFile, String sourceChar, long countString, int countLinesAvailableRAM, int maxLengthString) throws IOException {
+    public void createFile(String pathResultFile, String sourceChar, int countString, int countLinesAvailableRAM, int maxLengthString) throws IOException {
         createFileStringRandomChar(pathResultFile, sourceChar, countString, countLinesAvailableRAM, maxLengthString);
     }
 
-    private void createFileStringRandomChar(String pathResultFile, String sourceChar, long countString, int countLinesAvailableRAM, int maxLengthString) throws IOException {
+    private void createFileStringRandomChar(String pathResultFile, String sourceChar, int countString, int countLinesAvailableRAM, int maxLengthString) throws IOException {
         List<String> stringList = new ArrayList<>(countLinesAvailableRAM);
+
+        Path path = Paths.get(pathResultFile);
+        Files.deleteIfExists(path);
+        Files.createFile(path);
+
         int lengthString, indexChar;
-            for (long i = 0; i < countString; ) {
+            for (int i = 0; i < countString; ) {
                 for (int j = 0; j < countLinesAvailableRAM && i < countString; j++, i++) {
                     lengthString = (int) (maxLengthString * Math.random()) + 1;
 
@@ -28,16 +33,8 @@ public class CreateFile {
                     }
                     stringList.add(sb.toString());
                 }
-                writeFile(pathResultFile, stringList);
+                Files.write(path, stringList, StandardOpenOption.APPEND);
+                stringList.clear();
             }
-    }
-
-    private void writeFile(String pathFile, List<String> stringList) throws IOException {
-        Path path = Paths.get(pathFile);
-
-        Files.deleteIfExists(path);
-        Files.createFile(path);
-        Files.write(path, stringList, StandardOpenOption.WRITE);
-
     }
 }
