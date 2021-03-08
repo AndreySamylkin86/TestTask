@@ -1,7 +1,4 @@
-import service.CreateFile;
-import service.SortFile;
-import service.SortFileImplVerEffectiveRAM;
-import service.SortFileImplVerSaveRAM;
+import service.*;
 
 import java.io.IOException;
 
@@ -23,7 +20,7 @@ public class TestStart {
 
     private static void generateFileSource() throws IOException {
         long l1 = System.currentTimeMillis();
-        CreateFile cF = new CreateFile();
+        CreateFile cF = new CreateFileImpl();
         cF.createFile(PATH_SOURCE_FILE, SOURCE_CHAR, COUNT_LINES_SOURCE,
                 COUNT_LINES_AVAILABLE_RAM, MAX_LENGTH_STRING);
         long l2 = System.currentTimeMillis();
